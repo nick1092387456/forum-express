@@ -1,11 +1,13 @@
 const express = require('express')
 const handlebars = require('express-handlebars')
 const db = require('./models') //引入資料庫
-const app = express()
-const port = 3000
 const bodyParser = require('body-parser')
 const flash = require('connect-flash')
 const session = require('express-session')
+const passport = require('./config/passport')
+
+const app = express()
+const port = 3000
 
 //新增一個template叫做handlebars的引擎，並建立handlebars()來使用它，將參數帶入default main的樣板
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
@@ -13,6 +15,8 @@ app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }))
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(flash())
 
 app.use((req, res, next) => {
@@ -26,6 +30,6 @@ app.listen(port, () => {
 })
 
 const router = require('./routes')
-router(app)
+router(app, passport)
 
 module.exports = app
