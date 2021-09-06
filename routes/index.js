@@ -33,6 +33,16 @@ function router(app, passport) {
     authenticatedAdmin,
     adminController.getRestaurants
   )
+  app.get(
+    '/admin/restaurants/create',
+    authenticatedAdmin,
+    adminController.createRestaurant
+  )
+  app.post(
+    '/admin/restaurants',
+    authenticatedAdmin,
+    adminController.postRestaurant
+  )
 
   app.get('/signup', userController.signUpPage)
   app.post('/signup', userController.signUp)
