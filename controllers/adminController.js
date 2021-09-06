@@ -1,3 +1,4 @@
+//對應至router/index
 const adminController = {
   getRestaurants: (req, res) => {
     //這裡決定要去view裡面抓哪個handlebars

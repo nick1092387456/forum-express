@@ -1,5 +1,6 @@
 const restController = require('../controllers/restController.js')
 const adminController = require('../controllers/adminController.js')
+const userController = require('../controllers/userController.js')
 
 function router(app) {
   //如果使用者訪問首頁，就導向/restaurants頁面
@@ -13,6 +14,9 @@ function router(app) {
     res.redirect('/admin/restaurants')
   })
   app.get('/admin/restaurants', adminController.getRestaurants)
+
+  app.get('/signup', userController.signUpPage)
+  app.post('/signup', userController.signUp)
 }
 
 module.exports = router
