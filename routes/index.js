@@ -36,6 +36,7 @@ function router(app, passport) {
     authenticatedAdmin,
     adminController.getRestaurants
   )
+
   app.get(
     '/admin/restaurants/create',
     authenticatedAdmin,
@@ -67,6 +68,13 @@ function router(app, passport) {
     '/admin/restaurants/:id',
     authenticatedAdmin,
     adminController.deleteRestaurant
+  )
+  //使用者相關
+  app.get('/admin/users', authenticatedAdmin, adminController.getUsers)
+  app.put(
+    '/admin/users/:id/toggleAdmin',
+    authenticatedAdmin,
+    adminController.toggleAdmin
   )
 
   app.get('/signup', userController.signUpPage)

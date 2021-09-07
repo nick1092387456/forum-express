@@ -9,7 +9,7 @@ const db = require('../models')
 const helpers = require('../_helpers');
 
 describe('# A17: 使用者權限管理', function() {
-    
+
   context('# [顯示使用者清單]', () => {
     before(async() => {
       this.ensureAuthenticated = sinon.stub(
@@ -78,4 +78,4 @@ describe('# A17: 使用者權限管理', function() {
     })
 
   })
-})
+}) 
