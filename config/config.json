@@ -11,16 +11,17 @@
     "password": "password",
     "database": "forum_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": false
   },
   "production": {
-    "use_env_variable": "CLEARDB_DATABASE_URL",
-    "dialect": "postgres",
-    "protocol": "postgres",
-    "dialectOptions": {
-      "ssl": {
-        "rejectUnauthorized": false
-      }
-    }
+    "use_env_variable": "CLEARDB_SILVER_URL"
+  },
+  "travis": {
+    "username": "travis",
+    "database": "forum_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false
   }
 }
