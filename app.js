@@ -8,7 +8,7 @@ const passport = require('./config/passport')
 const methodOverride = require('method-override')
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 //新增一個template叫做handlebars的引擎，並建立handlebars()來使用它，將參數帶入default main的樣板
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
