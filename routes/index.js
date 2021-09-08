@@ -90,6 +90,17 @@ function router(app, passport) {
     categoryController.postCategory
   )
 
+  app.get(
+    '/admin/categories/:id',
+    authenticatedAdmin,
+    categoryController.getCategories
+  )
+  app.put(
+    '/admin/categories/:id',
+    authenticatedAdmin,
+    categoryController.putCategory
+  )
+
   app.get('/signup', userController.signUpPage)
   app.post('/signup', userController.signUp)
 
