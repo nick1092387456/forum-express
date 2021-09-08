@@ -48,6 +48,11 @@
           {{else}}
             <form action="/favorite/{{this.id}}" method="POST"><button type="submit" class="btn btn-primary">加到最愛</button></form>
           {{/if}}
+
+          {{!-- 新增移除喜歡 --}}
+          <form action="/like/{{this.id}}?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">Unlike</button></form>
+          <form action="/like/{{this.id}}" method="POST"><button type="submit" class="btn btn-primary">Like</button></form>
+
         </div>
       </div>
     </div>
