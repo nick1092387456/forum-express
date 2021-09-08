@@ -2,6 +2,7 @@ const helpers = require('../_helpers')
 const restController = require('../controllers/restController.js')
 const adminController = require('../controllers/adminController.js')
 const userController = require('../controllers/userController.js')
+const categoryController = require('../controllers/categoryController.js')
 const multer = require('multer')
 const upload = multer({ dest: 'temp/' })
 
@@ -75,6 +76,13 @@ function router(app, passport) {
     '/admin/users/:id/toggleAdmin',
     authenticatedAdmin,
     adminController.toggleAdmin
+  )
+
+  //category相關
+  app.get(
+    '/admin/categories',
+    authenticatedAdmin,
+    categoryController.getCategories
   )
 
   app.get('/signup', userController.signUpPage)
