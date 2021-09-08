@@ -14,7 +14,13 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 //新增一個template叫做handlebars的引擎，並建立handlebars()來使用它，將參數帶入default main的樣板
-app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
+app.engine(
+  'handlebars',
+  handlebars({
+    defaultLayout: 'main',
+    helpers: require('./config/handlebars-helpers'), //引入自定義的ifcond函式
+  })
+)
 //設定view engine，使用handlebars
 app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
