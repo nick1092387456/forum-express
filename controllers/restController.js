@@ -63,5 +63,29 @@ const restController = {
       })
     })
   },
+  // 最新動態撈資料用
+  getFeeds: (req, res) => {
+    return Promise.all([
+      Restaurant.findAll({
+        limit: 10,
+        raw: true,
+        nest: true,
+        order: [['createdAt', 'DESC']],
+        include: [Category],
+      }),
+      Comment.findAll({
+        limit: 10,
+        raw: true,
+        nest: true,
+        order: [['createdAt', 'DESC']],
+        include: [User, Restaurant],
+      }),
+    ]).then(([restaurants, comments]) => {
+      return res.render('feeds', {
+        restaurants: restaurants,
+        comments: comments,
+      })
+    })
+  },
 }
 module.exports = restController

@@ -71,7 +71,8 @@ function router(app, passport) {
     authenticatedAdmin,
     adminController.deleteRestaurant
   )
-
+  app.get('/restaurants/feeds', authenticatedAdmin, restController.getFeeds)
+    //這裡要注意feeds路由要在:id前面，因為feeds的數字內容有可能跟:id重疊到
   app.get('/restaurants/:id', authenticated, restController.getRestaurant)
 
   //使用者相關
