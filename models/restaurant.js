@@ -2,11 +2,6 @@
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Restaurant extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
       // define association here
       Restaurant.belongsTo(models.Category) // 加入關聯設定
@@ -20,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       opening_hours: DataTypes.STRING,
       description: DataTypes.TEXT,
       image: DataTypes.STRING,
+      CategoryId: DataTypes.INTEGER, // 更新欄位清單
     },
     {
       sequelize,
