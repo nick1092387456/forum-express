@@ -16,6 +16,7 @@ module.exports = {
         description: faker.lorem.text(),
         createdAt: new Date(),
         updatedAt: new Date(),
+        CategoryId: Math.floor(Math.random() * 6) * 10 + 1, //新增種類ID，因使用clearDB，所以會*10
       })),
       {}
     )
