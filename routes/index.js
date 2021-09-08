@@ -70,6 +70,9 @@ function router(app, passport) {
     authenticatedAdmin,
     adminController.deleteRestaurant
   )
+
+  app.get('/restaurants/:id', authenticated, restController.getRestaurant)
+
   //使用者相關
   app.get('/admin/users', authenticatedAdmin, adminController.getUsers)
   app.put(
