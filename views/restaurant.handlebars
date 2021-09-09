@@ -19,10 +19,17 @@
   </div>
   <div class='col-md-8'>
     <p>{{restaurant.description}}</p>
+        {{!-- 收藏按鈕 --}}
         {{#if isFavorited }}
           <form action="/favorite/{{restaurant.id}}?_method=DELETE" method="POST" style="display: contents;"><button type="submit" class="btn btn-danger">移除最愛</button></form>
         {{else}}
           <form action="/favorite/{{restaurant.id}}" method="POST" style="display: contents;"><button type="submit" class="btn btn-primary">加到最愛</button></form>
+        {{/if}}
+        {{!-- 喜歡按鈕 --}}
+        {{#if isLiked }}
+          <form action="/Like/{{restaurant.id}}?_method=DELETE" method="POST" style="display: contents;"><button type="submit" class="btn btn-danger">Unlike</button></form>
+        {{else}}
+          <form action="/like/{{restaurant.id}}" method="POST" style="display: contents;"><button type="submit" class="btn btn-primary">Like</button></form>
         {{/if}}
   </div>
   <hr />
@@ -39,6 +46,7 @@
       <button type="submit" class="btn btn-danger">Delete</button>
     </form>
   {{/if}}
+  
   <blockquote class='blockquote mb-0'>
     <h4><a href='/users/{{this.User.id}}'>{{this.User.name}}</a></h4>
     <p>{{this.text}}</p>

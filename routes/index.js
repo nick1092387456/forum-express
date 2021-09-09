@@ -128,6 +128,10 @@ function router(app, passport) {
     commentController.deleteComment
   )
 
+  //新增刪除喜歡
+  app.post('/like/:restaurantId', authenticated, userController.addLike)
+  app.delete('/like/:restaurantId', authenticated, userController.removeLike)
+
   app.get('/signup', userController.signUpPage)
   app.post('/signup', userController.signUp)
 

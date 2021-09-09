@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs')
 const db = require('../models')
 const User = db.User
 const Favorite = db.Favorite
+const Like = db.Like
 
 const userController = {
   signUpPage: (req, res) => {
@@ -50,7 +51,7 @@ const userController = {
     req.logout()
     res.redirect('/signin')
   },
-  //新增/移除使用者
+  //新增/移除最愛
   addFavorite: (req, res) => {
     return Favorite.create({
       UserId: req.user.id,
@@ -67,6 +68,28 @@ const userController = {
       },
     }).then((favorite) => {
       favorite.destroy().then((restaurant) => {
+        return res.redirect('back')
+      })
+    })
+  },
+
+  //新增/移除喜歡
+  addLike: (req, res) => {
+    return Like.create({
+      UserId: req.user.id,
+      RestaurantId: req.params.restaurantId,
+    }).then((restaurant) => {
+      return res.redirect('back')
+    })
+  },
+  removeLike: (req, res) => {
+    return Like.findOne({
+      where: {
+        UserId: req.user.id,
+        RestaurantId: req.params.restaurantId,
+      },
+    }).then((like) => {
+      like.destroy().then((restaurant) => {
         return res.redirect('back')
       })
     })
