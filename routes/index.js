@@ -91,10 +91,6 @@ function router(app, passport) {
     userController.removeFavorite
   )
 
-  //新增刪除喜歡
-  app.post('/like/:restaurantId', authenticated, userController.addLike)
-  app.delete('/like/:restaurantId', authenticated, userController.removeLike)
-
   //category相關
   app.get(
     '/admin/categories',
@@ -131,6 +127,10 @@ function router(app, passport) {
     authenticatedAdmin,
     commentController.deleteComment
   )
+
+  //新增刪除喜歡
+  app.post('/like/:restaurantId', authenticated, userController.addLike)
+  app.delete('/like/:restaurantId', authenticated, userController.removeLike)
 
   app.get('/signup', userController.signUpPage)
   app.post('/signup', userController.signUp)
