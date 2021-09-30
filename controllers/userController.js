@@ -100,9 +100,11 @@ const userController = {
   },
 
   getUser: (req, res) => {
-    return User.findByPk(req.params.id)
+    const id = Number(req.params.id)
+    const userId = helpers.getUser(req).id
+    return User.findByPk(id)
       .then((user) => {
-        return res.render('profile', { user: user.toJSON() })
+        return res.render('profile', { user: user.toJSON(), userId })
       })
       .catch((error) => console.log(error))
   },
